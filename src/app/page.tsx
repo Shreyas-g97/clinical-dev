@@ -1,6 +1,9 @@
+import React from 'react';
 import Image from 'next/image';
-import { TokenGate } from '@/components/TokenGate';
-import { getSession } from '@/utils/session';
+import { TokenGate } from '../components/TokenGate';
+import { getSession } from '../utils/session';
+import axios from 'axios';
+import { useRef } from 'react';
 
 /**
  * The revalidate property determine's the cache TTL for this page and
@@ -10,9 +13,7 @@ export const revalidate = 180;
 
 async function Content({ searchParams }: { searchParams: SearchParams }) {
   const data = await getSession(searchParams);
-  // Console log the data to see what's available
-  // You can see these logs in the terminal where
-  // you run `yarn dev`
+  
   console.log({ data });
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
